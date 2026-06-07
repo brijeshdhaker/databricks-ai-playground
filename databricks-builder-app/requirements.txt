@@ -519,7 +519,7 @@ tzdata==2026.1
     # via
     #   pandas
     #   psycopg
-uncalled-for==0.2.0
+uncalled-for==0.3.2
     # via fastmcp
 urllib3==2.6.3
     # via
