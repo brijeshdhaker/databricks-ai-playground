@@ -260,7 +260,9 @@ fi
 
 # Set configuration URLs after parsing branch argument
 REPO_URL="https://github.com/databricks-solutions/ai-dev-kit.git"
+SOURCE_REPO_DIR="/home/brijeshdhaker/Downloads/ai-dev-kit-main"
 RAW_URL="https://raw.githubusercontent.com/databricks-solutions/ai-dev-kit/${BRANCH}"
+RAW_SOURCE_REPO_DIR="/home/brijeshdhaker/Downloads/ai-dev-kit-main"
 INSTALL_DIR="${AIDEVKIT_HOME:-$HOME/.ai-dev-kit}"
 REPO_DIR="$INSTALL_DIR/repo"
 VENV_DIR="$INSTALL_DIR/.venv"
@@ -1107,11 +1109,14 @@ setup_mcp() {
         git -C "$REPO_DIR" fetch -q --depth 1 origin "$BRANCH" 2>/dev/null || true
         git -C "$REPO_DIR" reset --hard FETCH_HEAD 2>/dev/null || {
             rm -rf "$REPO_DIR"
-            git -c advice.detachedHead=false clone -q --depth 1 --branch "$BRANCH" "$REPO_URL" "$REPO_DIR"
+            #git -c advice.detachedHead=false clone -q --depth 1 --branch "$BRANCH" "$REPO_URL" "$REPO_DIR"
+            cp -rf $SOURCE_REPO_DIR $REPO_DIR
         }
     else
         mkdir -p "$INSTALL_DIR"
-        git -c advice.detachedHead=false clone -q --depth 1 --branch "$BRANCH" "$REPO_URL" "$REPO_DIR"
+        #git -c advice.detachedHead=false clone -q --depth 1 --branch "$BRANCH" "$REPO_URL" "$REPO_DIR"
+        cp -rf $SOURCE_REPO_DIR $REPO_DIR
+
     fi
     ok "Repository cloned ($BRANCH)"
     
@@ -2054,7 +2059,8 @@ main() {
     elif [ ! -d "$REPO_DIR" ]; then
         step "Downloading sources"
         mkdir -p "$INSTALL_DIR"
-        git -c advice.detachedHead=false clone -q --depth 1 --branch "$BRANCH" "$REPO_URL" "$REPO_DIR"
+        #git -c advice.detachedHead=false clone -q --depth 1 --branch "$BRANCH" "$REPO_URL" "$REPO_DIR"
+        cp -rf "$SOURCE_REPO_DIR" "$REPO_DIR"
         ok "Repository cloned ($BRANCH)"
     fi
     
