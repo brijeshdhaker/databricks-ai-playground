@@ -234,7 +234,7 @@ markupsafe==3.0.2
     #   werkzeug
 matplotlib==3.10.8
     # via mlflow
-mcp==1.27.0
+mcp==1.27.2
     # via
     #   claude-agent-sdk
     #   databricks-builder-app
