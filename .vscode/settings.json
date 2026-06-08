@@ -1,0 +1,43 @@
+{
+    "python.envFile": "${workspaceFolder}/.env",
+    "python-envs.defaultEnvManager": "ms-python.python:venv",
+    "python-envs.defaultPackageManager": "ms-python.python:pip",
+    "python.autoComplete.extraPaths": [
+        "${workspaceFolder}/databricks-tools-core",
+        "${workspaceFolder}/databricks-mcp-server",
+        "${workspaceFolder}/databricks-builder-app",
+    ],
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/databricks-tools-core",
+        "${workspaceFolder}/databricks-mcp-server",
+        "${workspaceFolder}/databricks-builder-app",
+    ],
+    "jupyter.notebookFileRoot": "${workspaceFolder}",
+    "python.terminal.useEnvFile": true,
+    "python.terminal.activateEnvironment": true,
+    "terminal.integrated.env.linux": {
+        "PYTHONPATH": "${workspaceFolder}/databricks-tools-core:${workspaceFolder}/databricks-mcp-server:${workspaceFolder}/databricks-builder-app:${env:PYTHONPATH}"
+    },
+    "python.testing.autoTestDiscoverOnSaveEnabled": true,
+    "python.testing.cwd": "${workspaceFolder}/src/test/py",
+    "python.testing.pytestEnabled": false,
+    "python.testing.pytestArgs": [
+        "${workspaceFolder}/src/test/py"
+    ],
+    "python.testing.unittestEnabled": true,
+    "python.testing.unittestArgs": [
+        "-v", "-s", "${workspaceFolder}/src/test/py", "-p", "Test*.py"
+    ],
+    "postman.settings.dotenv-detection-notification-visibility": false,
+    "chat.mcp.discovery.enabled": {
+        "claude-desktop": true,
+        "windsurf": true,
+        "cursor-global": true,
+        "cursor-workspace": true
+    },
+    "jupyter.interactiveWindow.cellMarker.codeRegex": "^# COMMAND ----------|^# Databricks notebook source|^(#\\s*%%|#\\s*\\<codecell\\>|#\\s*In\\[\\d*?\\]|#\\s*In\\[ \\])",
+    "jupyter.interactiveWindow.cellMarker.default": "# COMMAND ----------"
+
+}

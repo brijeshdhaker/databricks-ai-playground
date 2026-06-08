@@ -1,6 +1,6 @@
 # Databricks AI Dev Kit
 .ai-dev-kit/
-#.claude/
+.claude/
 .local
 
 # Python
@@ -38,7 +38,7 @@ env/
 
 # IDE
 .idea/
-.vscode/
+#.vscode/
 *.swp
 *.swo
 *~
@@ -71,7 +71,6 @@ htmlcov/
 
 # MCP Server logs
 *.log
-mcp.json
 
 # Generated test files
 databricks-tools-core/tests/integration/pdf/generated_pdf/
