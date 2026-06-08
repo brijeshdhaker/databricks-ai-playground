@@ -135,17 +135,15 @@ def run_migrations_online():
   url, connect_args = get_url_and_connect_args()
 
   # Get schema name from Alembic config or environment
-  #schema_name = config.get_main_option('lakebase_schema_name') or os.environ.get('LAKEBASE_SCHEMA_NAME', 'public')
-  schema_name = 'public'
-
+  schema_name = config.get_main_option('lakebase_schema_name') or os.environ.get('LAKEBASE_SCHEMA_NAME', 'builder_app')
+  
   # Validate schema name to prevent SQL injection (only allow alphanumeric + underscores)
   import re
   if not re.match(r'^[a-zA-Z_][a-zA-Z0-9_]*$', schema_name):
     raise ValueError(f'Invalid schema name: {schema_name!r} — must be alphanumeric/underscores only')
 
   # Add search_path to connect_args so tables are created in the custom schema
-  #connect_args.setdefault('options', f'-c search_path={schema_name},public')
-  connect_args.setdefault('options', f'-c search_path={schema_name}')
+  connect_args.setdefault('options', f'-c search_path={schema_name},public')
   connectable = create_engine(
     url,
     poolclass=pool.NullPool,

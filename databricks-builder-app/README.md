@@ -240,22 +240,22 @@ This will:
 
 ```bash
 # First time — everything from scratch
-./scripts/start_local.sh --profile sandbox-databricks-pat
+./scripts/start_local.sh --profile DEFAULT
 
 # Subsequent runs — fast (deps cached, Lakebase exists)
-./scripts/start_local.sh --profile sandbox-databricks-pat
+./scripts/start_local.sh --profile DEFAULT
 
 # Skip Lakebase provisioning
-./scripts/start_local.sh --profile sandbox-databricks-pat --skip-lakebase
+./scripts/start_local.sh --profile DEFAULT --skip-lakebase
 
 # Force reinstall all dependencies
-./scripts/start_local.sh --profile sandbox-databricks-pat --force-install
+./scripts/start_local.sh --profile DEFAULT --force-install
 
 # Regenerate .env.local
-./scripts/start_local.sh --profile sandbox-databricks-pat --force-env --skip-lakebase
+./scripts/start_local.sh --profile DEFAULT--force-env --skip-lakebase
 
 # Custom Lakebase project name
-./scripts/start_local.sh --profile sandbox-databricks-pat --lakebase-id my-custom-db
+./scripts/start_local.sh --profile DEFAULT --lakebase-id my-custom-db
 ```
 
 #### Access the App

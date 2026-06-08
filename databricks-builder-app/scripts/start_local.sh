@@ -171,7 +171,9 @@ if [ -f "$PROJECT_DIR/.env.local" ] && [ "$FORCE_ENV" != true ]; then
 else
   cat > "$PROJECT_DIR/.env.local" << ENVEOF
 DATABRICKS_HOST=${WORKSPACE_HOST}
-DATABRICKS_TOKEN=${DATABRICKS_TOKEN}
+#DATABRICKS_TOKEN=${DATABRICKS_TOKEN}
+DATABRICKS_TOKEN=dapi0fe24d083ab1528af917d57b74a86edd
+DATABRICKS_AUTH_TYPE=pat
 #LAKEBASE_ENDPOINT=${LAKEBASE_ENDPOINT}
 #LAKEBASE_DATABASE_NAME=databricks_postgres
 LAKEBASE_PG_URL=postgresql://postgres:paSSW0rd@postgresql.sandbox.net:5432/postgres?sslmode=disable

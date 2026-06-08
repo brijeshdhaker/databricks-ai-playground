@@ -23,8 +23,7 @@ dependencies = [
   # Database
   "sqlalchemy[asyncio]",
   "alembic",
-  #"psycopg[binary]>=3.2.0",  # psycopg3 async driver with hostaddr support asyncmy greenlet
-  #"psycopg[binary,pool]",
+  "psycopg[binary,pool]>=3.2.0",  # psycopg3 async driver with hostaddr support asyncmy greenlet
   #"greenlet>=3.0.0",
   #"psycopg2-binary>=2.9.11",  # For alembic migrations (sync)
   #"psycopg2-binary",
