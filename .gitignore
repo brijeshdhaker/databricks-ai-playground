@@ -71,6 +71,7 @@ htmlcov/
 
 # MCP Server logs
 *.log
+#mcp.json
 
 # Generated test files
 databricks-tools-core/tests/integration/pdf/generated_pdf/
@@ -79,3 +80,5 @@ databricks-tools-core/tests/integration/pdf/generated_pdf/
 __pycache__/
 windows_info.txt
 
+#
+.databrickscfg
