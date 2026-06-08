@@ -143,7 +143,7 @@ def run_migrations_online():
     raise ValueError(f'Invalid schema name: {schema_name!r} — must be alphanumeric/underscores only')
 
   # Add search_path to connect_args so tables are created in the custom schema
-  connect_args.setdefault('options', f'-c search_path={schema_name},public')
+  connect_args.setdefault('options', f'-c search_path={schema_name}')
   connectable = create_engine(
     url,
     poolclass=pool.NullPool,

@@ -252,7 +252,7 @@ This will:
 ./scripts/start_local.sh --profile DEFAULT --force-install
 
 # Regenerate .env.local
-./scripts/start_local.sh --profile DEFAULT--force-env --skip-lakebase
+./scripts/start_local.sh --profile DEFAULT --force-env --skip-lakebase
 
 # Custom Lakebase project name
 ./scripts/start_local.sh --profile DEFAULT --lakebase-id my-custom-db

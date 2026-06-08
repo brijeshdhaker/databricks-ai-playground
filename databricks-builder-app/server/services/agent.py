@@ -375,7 +375,7 @@ async def stream_agent_response(
       claude_env['ANTHROPIC_AUTH_TOKEN'] = effective_fmapi_token
 
       # Set the model to use (required for Databricks FMAPI)
-      anthropic_model = os.environ.get('ANTHROPIC_MODEL', 'databricks-claude-opus-4-6')
+      anthropic_model = os.environ.get('ANTHROPIC_MODEL', 'databricks-gemma-3-12b')
       claude_env['ANTHROPIC_MODEL'] = anthropic_model
 
       # Disable beta headers and experimental betas for Databricks FMAPI compatibility

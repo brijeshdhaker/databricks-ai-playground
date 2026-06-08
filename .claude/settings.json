@@ -1,9 +1,9 @@
 {
     "env": {
-        "ANTHROPIC_MODEL": "databricks-claude-sonnet-4-5",
+        "ANTHROPIC_MODEL": "databricks-gemma-3-12b",
         "ANTHROPIC_BASE_URL": "https://dbc-ad78fc43-bcc0.cloud.databricks.com/serving-endpoints/anthropic",
         "ANTHROPIC_AUTH_TOKEN": "dapi..",
-        "ANTHROPIC_DEFAULT_OPUS_MODEL": "databricks-claude-opus-4-5",
-        "ANTHROPIC_DEFAULT_SONNET_MODEL": "databricks-claude-sonnet-4-5"
+        "ANTHROPIC_DEFAULT_OPUS_MODEL": "databricks-gemma-3-12b",
+        "ANTHROPIC_DEFAULT_SONNET_MODEL": "databricks-gemma-3-12b"
     }
 }
