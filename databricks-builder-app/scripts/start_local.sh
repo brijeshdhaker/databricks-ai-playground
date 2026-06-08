@@ -172,13 +172,12 @@ else
   cat > "$PROJECT_DIR/.env.local" << ENVEOF
 DATABRICKS_HOST=${WORKSPACE_HOST}
 #DATABRICKS_TOKEN=${DATABRICKS_TOKEN}
-DATABRICKS_TOKEN=dapi0fe24d083ab1528af917d57b74a86edd
-DATABRICKS_AUTH_TYPE=pat
 #LAKEBASE_ENDPOINT=${LAKEBASE_ENDPOINT}
-#LAKEBASE_DATABASE_NAME=databricks_postgres
-LAKEBASE_PG_URL=postgresql://postgres:paSSW0rd@postgresql.sandbox.net:5432/postgres?sslmode=disable
+LAKEBASE_DATABASE_NAME=databricks_postgres
+LAKEBASE_SCHEMA_NAME=builder_app
+LAKEBASE_PG_URL=postgresql://postgres:paSSW0rd@postgresql.sandbox.net:5432/databricks_postgres?sslmode=disable
 LLM_PROVIDER=DATABRICKS
-DATABRICKS_MODEL=databricks-meta-llama-3-3-70b-instruct
+DATABRICKS_MODEL=databricks-gemma-3-12b #databricks-meta-llama-3-3-70b-instruct
 DATABRICKS_MODEL_MINI=databricks-gemini-3-flash
 ENABLED_SKILLS=
 SKILLS_ONLY_MODE=false
