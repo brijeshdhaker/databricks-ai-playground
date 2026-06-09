@@ -135,8 +135,9 @@ def run_migrations_online():
   url, connect_args = get_url_and_connect_args()
 
   # Get schema name from Alembic config or environment
-  schema_name = config.get_main_option('lakebase_schema_name') or os.environ.get('LAKEBASE_SCHEMA_NAME', 'builder_app')
-  
+  #schema_name = config.get_main_option('lakebase_schema_name') or os.environ.get('LAKEBASE_SCHEMA_NAME', 'builder_app')
+  schema_name = 'public'
+
   # Validate schema name to prevent SQL injection (only allow alphanumeric + underscores)
   import re
   if not re.match(r'^[a-zA-Z_][a-zA-Z0-9_]*$', schema_name):

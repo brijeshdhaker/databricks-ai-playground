@@ -20,6 +20,7 @@ import uuid
 from contextlib import asynccontextmanager
 from typing import AsyncGenerator, Optional
 from urllib.parse import parse_qs, urlencode, urlparse, urlunparse
+
 from sqlalchemy import URL, event
 from sqlalchemy.ext.asyncio import (
     AsyncEngine,
@@ -399,14 +400,13 @@ def init_database(database_url: Optional[str] = None) -> AsyncEngine:
 
     _engine = create_async_engine(
         url,
-        #pool_size=int(os.environ.get("DB_POOL_SIZE", "5")),
-        #max_overflow=int(os.environ.get("DB_MAX_OVERFLOW", "10")),
-        #pool_pre_ping=True,
-        #pool_recycle=int(os.environ.get("DB_POOL_RECYCLE_INTERVAL", "3600")),
-        #pool_timeout=int(os.environ.get("DB_POOL_TIMEOUT", "10")),
-        echo=True,
-        future=True,
-        #connect_args=connect_args,
+        pool_size=int(os.environ.get("DB_POOL_SIZE", "5")),
+        max_overflow=int(os.environ.get("DB_MAX_OVERFLOW", "10")),
+        pool_pre_ping=True,
+        pool_recycle=int(os.environ.get("DB_POOL_RECYCLE_INTERVAL", "3600")),
+        pool_timeout=int(os.environ.get("DB_POOL_TIMEOUT", "10")),
+        echo=False,
+        connect_args=connect_args,
     )
 
     # Register do_connect event to inject fresh tokens
@@ -423,6 +423,7 @@ def init_database(database_url: Optional[str] = None) -> AsyncEngine:
         expire_on_commit=False,
         autoflush=False,
     )
+
     return _engine
 
 
@@ -430,12 +431,7 @@ def get_engine() -> AsyncEngine:
     """Get the database engine, initializing if needed."""
     global _engine
     if _engine is None:
-        _engine = create_async_engine(
-            "postgresql+asyncpg://postgres:paSSW0rd@postgresql.sandbox.net:5432/postgres",
-            echo=True,
-            future=True,
-        )
-        #init_database()
+        init_database()
     return _engine
 
 
@@ -481,68 +477,45 @@ def _is_connection_error(exc: Exception) -> bool:
     return any(p in msg for p in transient_patterns)
 
 
-# @asynccontextmanager
-# async def session_scope() -> AsyncGenerator[AsyncSession, None]:
-#     """Provide a transactional scope around a series of operations.
-
-#     Retries on transient connection errors (e.g., autoscale compute waking
-#     from idle) with exponential backoff before propagating the failure.
-
-#     Yields:
-#         SQLAlchemy AsyncSession instance
-
-#     Example:
-#         async with session_scope() as session:
-#             result = await session.execute(select(Model))
-#     """
-#     last_exc: Optional[Exception] = None
-
-#     for attempt in range(_SESSION_MAX_RETRIES + 1):
-#         session = await get_session()
-#         try:
-#             yield session
-#             await session.commit()
-#             return
-#         except Exception as exc:
-#             await session.rollback()
-#             if attempt < _SESSION_MAX_RETRIES and _is_connection_error(exc):
-#                 delay = _SESSION_RETRY_BASE_DELAY * (2 ** attempt)
-#                 logger.warning(
-#                     f"Database connection error (attempt {attempt + 1}/{_SESSION_MAX_RETRIES + 1}), "
-#                     f"retrying in {delay:.1f}s: {exc}"
-#                 )
-#                 last_exc = exc
-#                 await asyncio.sleep(delay)
-#                 continue
-#             raise
-#         finally:
-#             await session.close()
-
-#     if last_exc:
-#         raise last_exc
-
-from sqlalchemy.orm import sessionmaker
-def async_session_generator():
-    """
-    """
-    engine = get_engine()
-    return sessionmaker(engine, class_=AsyncSession)
-
-
 @asynccontextmanager
-async def session_scope():
-    """
-    """
-    try:
-        async_session = async_session_generator()
+async def session_scope() -> AsyncGenerator[AsyncSession, None]:
+    """Provide a transactional scope around a series of operations.
 
-        async with async_session() as session:
+    Retries on transient connection errors (e.g., autoscale compute waking
+    from idle) with exponential backoff before propagating the failure.
+
+    Yields:
+        SQLAlchemy AsyncSession instance
+
+    Example:
+        async with session_scope() as session:
+            result = await session.execute(select(Model))
+    """
+    last_exc: Optional[Exception] = None
+
+    for attempt in range(_SESSION_MAX_RETRIES + 1):
+        session = await get_session()
+        try:
             yield session
-    except:
-        await session.rollback()
-        raise
-    finally:
-        await session.close()
+            await session.commit()
+            return
+        except Exception as exc:
+            await session.rollback()
+            if attempt < _SESSION_MAX_RETRIES and _is_connection_error(exc):
+                delay = _SESSION_RETRY_BASE_DELAY * (2 ** attempt)
+                logger.warning(
+                    f"Database connection error (attempt {attempt + 1}/{_SESSION_MAX_RETRIES + 1}), "
+                    f"retrying in {delay:.1f}s: {exc}"
+                )
+                last_exc = exc
+                await asyncio.sleep(delay)
+                continue
+            raise
+        finally:
+            await session.close()
+
+    if last_exc:
+        raise last_exc
 
 
 async def create_tables():

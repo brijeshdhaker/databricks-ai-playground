@@ -412,8 +412,8 @@ def _get_mlflow_stop_hook(mlflow_experiment: str | None = None, skill_name: str 
                 try:
                     client = mlflow.MlflowClient()
                     trace_id = trace.info.trace_id
-                    requested_model = os.environ.get("ANTHROPIC_MODEL", "")
-                    base_url = os.environ.get("ANTHROPIC_BASE_URL", "")
+                    requested_model = os.environ.get("ANTHROPIC_MODEL", "gemma4:26b-a4b-it-qat")
+                    base_url = os.environ.get("ANTHROPIC_BASE_URL", "http://hostmaster.sandbox.net:11434")
                     if requested_model:
                         client.set_trace_tag(trace_id, "databricks.requested_model", requested_model)
                     if base_url:

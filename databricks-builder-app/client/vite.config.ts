@@ -10,6 +10,7 @@ export default defineConfig({
     },
   },
   server: {
+    allowedHosts:["playground.sandbox.net"],
     port: 3000,
     proxy: {
       "/api": {

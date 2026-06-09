@@ -80,5 +80,5 @@ databricks-tools-core/tests/integration/pdf/generated_pdf/
 __pycache__/
 windows_info.txt
 
-#
+# 
 .databrickscfg

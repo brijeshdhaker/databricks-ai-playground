@@ -18,11 +18,11 @@ databricks auth env --profile DEFAULT
 databricks fs ls
 
 # Login
-databricks auth login --profile databricks-oauth
+databricks auth login --profile databricks-cli
 
-databricks auth describe --profile databricks-oauth
+databricks auth describe --profile databricks-cli
 
-databricks auth token --profile databricks-oauth
+databricks auth token --profile databricks-cli
 
 databricks current-user me --profile databricks-oauth
 

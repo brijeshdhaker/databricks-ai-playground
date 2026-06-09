@@ -35,8 +35,23 @@
       "args": ["server.app:app", "--reload", "--reload-dir", "server", "--host", "0.0.0.0", "--port", "8000" ],
       "cwd": "${workspaceFolder}/databricks-builder-app",
       "jinja": true,
-      "envFile": "${workspaceFolder}/.env",
+      "envFile": "${workspaceFolder}/databricks-builder-app/.env.local",
       "justMyCode": false
+    },
+    {
+      "name": "NPM Run",
+      "request": "launch",
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
+      "runtimeExecutable": "npm",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}/databricks-builder-app/client",
     },
     {
       "name": "Python Debugger: Flask",
