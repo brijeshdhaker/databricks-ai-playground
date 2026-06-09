@@ -501,7 +501,7 @@ That's it. The script handles everything:
 ./scripts/deploy.sh my-builder-app --profile sandbox-databricks-pat
 
 # Deploy with MCP Gateway for Genie Code (name MUST start with mcp-)
-./scripts/deploy.sh mcp-builder-app --enable-mcp --profile sandbox-databricks-pat
+./scripts/deploy.sh mcp-builder-app --enable-mcp --profile databricks-pat
 
 # Quick redeploy (skip Lakebase + frontend build + skills download)
 ./scripts/deploy.sh my-builder-app --profile sandbox-databricks-pat --skip-lakebase --skip-build --skip-skills
