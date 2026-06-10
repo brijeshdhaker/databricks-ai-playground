@@ -39,7 +39,19 @@
       "justMyCode": false
     },
     {
-      "name": "NPM Run",
+      "name": "Server :: AI Playground",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "console": "integratedTerminal",
+      "args": ["server.app:app", "--reload", "--reload-dir", "server", "--host", "0.0.0.0", "--port", "8000" ],
+      "cwd": "${workspaceFolder}/databricks-builder-app",
+      "jinja": true,
+      "envFile": "${workspaceFolder}/databricks-builder-app/.env.local",
+      "justMyCode": false
+    },
+    {
+      "name": "GUI :: AI Playground",
       "request": "launch",
       "runtimeArgs": [
         "run",

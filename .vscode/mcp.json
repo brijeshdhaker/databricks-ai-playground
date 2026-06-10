@@ -1,41 +1,25 @@
 {
-	"inputs": [],
+	"inputs": [{
+		"id": "databricks_access_token",
+		"description": "Databricks Access Token",
+		"type": "promptString",
+		"password": true,
+		"default": "",
+	}],
 	"servers": {
+		"databricks-mcps": {
+			"command": "${workspaceFolder}/.venv/bin/python",
+			"args": ["${workspaceFolder}/databricks-mcp-server/run_server.py"],
+			"env":{
+				"DATABRICKS_CONFIG_PROFILE":"DEFAULT"
+			}
+		},
 		"databricks-sql": {
 			"type": "http",
 			"url": "https://dbc-ad78fc43-bcc0.cloud.databricks.com/api/2.0/mcp/sql",
 			"headers": {
-				"Authorization": "Bearer "
+				"Authorization": "Bearer ${input:databricks_access_token}"
 			}
 		},
-		"microsoft/playwright-mcp": {
-			"type": "stdio",
-			"command": "npx",
-			"args": [
-				"@playwright/mcp@latest"
-			],
-			//"gallery": "https://api.mcp.github.com",
-			//"version": "0.0.1-seed"
-		},
-		"docs-langchain": {
-			"url": "https://docs.langchain.com/mcp"
-		},
-		"weather-server-mcp": {
-			"url": "http://127.0.0.1:8011/mcp"
-		},
-		"email-server-mcp": {
-			"url": "http://127.0.0.1:8000/mcp"
-		},
-		"sql-server-mcp": {
-			"type": "stdio",
-			"command": "${workspaceFolder}/.venv/bin/python",
-			"args": [
-				"${workspaceFolder}/src/main/py/com/example/ai/mcp/mysqlserver.py"
-			],
-			"env": {
-				"WORK_DIR": "${workspaceFolder}",
-				"PYTHONPATH": "${workspaceFolder}/src/main/py"
-			},
-		}
 	}
 }

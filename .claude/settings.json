@@ -1,10 +1,31 @@
 {
-    "env": {
-        "ANTHROPIC_MODEL": "gemma4:26b-a4b-it-qat",
-        //"ANTHROPIC_BASE_URL": "https://dbc-ad78fc43-bcc0.cloud.databricks.com/serving-endpoints/anthropic",
-        "ANTHROPIC_BASE_URL": "http://hostmaster.sandbox.net:11434",
-        "ANTHROPIC_AUTH_TOKEN": "dapi..",
-        "ANTHROPIC_DEFAULT_OPUS_MODEL": "gemma4:26b-a4b-it-qat",
-        "ANTHROPIC_DEFAULT_SONNET_MODEL": "gemma4:26b-a4b-it-qat"
-    }
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(npm run lint)",
+      "Bash(npm run test *)",
+      "Read(~/.zshrc)"
+    ],
+    "deny": [
+      "Bash(curl *)",
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)"
+    ]
+  },
+  "env": {
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "1",
+    "OTEL_METRICS_EXPORTER": "otlp",
+    "ANTHROPIC_MODEL": "gemma4:26b-a4b-it-qat",
+    "ANTHROPIC_BASE_URL": "http://hostmaster.sandbox.net:11434",
+    "ANTHROPIC_AUTH_TOKEN": "dapi..",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "gemma4:26b-a4b-it-qat",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "gemma4:26b-a4b-it-qat"
+  },
+
+  "companyAnnouncements": [
+    "Welcome to Sandbox ! Review our code guidelines at docs.sandbox.net",
+    "Reminder: Code reviews required for all PRs",
+    "New security policy in effect"
+  ]
 }
