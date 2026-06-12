@@ -100,10 +100,10 @@ class DQXExecutor:
 
         # Submit the rule query
         try:
-            from pyspark.sql import SparkSession, Row
-            spark = SparkSession.builder.appName("DQX_demo_library").getOrCreate()
+            from databricks.connect import DatabricksSession
+            spark = DatabricksSession.builder.getOrCreate()
             ws = self.client
-            generator = DQGenerator(workspace_client=ws, spark=spark) 
+            generator = DQGenerator(workspace_client=ws) #, spark=spark
             checks = generator.generate_dq_rules_ai_assisted(
                 user_input=rule_query,
                 input_config=InputConfig(location=f"{catalog}.{schema}.customers")
