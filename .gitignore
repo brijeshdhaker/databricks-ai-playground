@@ -35,6 +35,7 @@ env/
 .venv
 .env.*
 .env
+.env.test
 
 # IDE
 .idea/
@@ -82,3 +83,4 @@ windows_info.txt
 
 # 
 .databrickscfg
+.databricks

@@ -1,3 +1,6 @@
+#
+python -m ensurepip --upgrade
+
 # 
 uv venv --python 3.12.13
 

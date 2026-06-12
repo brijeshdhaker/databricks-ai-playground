@@ -366,6 +366,7 @@ uv run pytest tests/integration/ -v
 
 # Run specific test file
 uv run pytest tests/integration/sql/test_sql.py -v
+uv run pytest tests/integration/dqx/test_dqx.py -v
 
 # Run specific test class
 uv run pytest tests/integration/sql/test_table_stats.py::TestTableStatLevelDetailed -v

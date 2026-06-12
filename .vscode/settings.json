@@ -5,14 +5,14 @@
     "python.autoComplete.extraPaths": [
         "${workspaceFolder}/databricks-tools-core",
         "${workspaceFolder}/databricks-mcp-server",
-        "${workspaceFolder}/databricks-builder-app",
+        "${workspaceFolder}/databricks-builder-app"
     ],
     "python.analysis.typeCheckingMode": "basic",
     "python.analysis.autoImportCompletions": true,
     "python.analysis.extraPaths": [
         "${workspaceFolder}/databricks-tools-core",
         "${workspaceFolder}/databricks-mcp-server",
-        "${workspaceFolder}/databricks-builder-app",
+        "${workspaceFolder}/databricks-builder-app"
     ],
     "jupyter.notebookFileRoot": "${workspaceFolder}",
     "python.terminal.useEnvFile": true,
@@ -21,14 +21,14 @@
         "PYTHONPATH": "${workspaceFolder}/databricks-tools-core:${workspaceFolder}/databricks-mcp-server:${workspaceFolder}/databricks-builder-app:${env:PYTHONPATH}"
     },
     "python.testing.autoTestDiscoverOnSaveEnabled": true,
-    "python.testing.cwd": "${workspaceFolder}/src/test/py",
-    "python.testing.pytestEnabled": false,
+    //"python.testing.cwd": "${workspaceFolder}",
+    "python.testing.pytestEnabled": true,
     "python.testing.pytestArgs": [
-        "${workspaceFolder}/src/test/py"
+        //"${workspaceFolder}"
     ],
-    "python.testing.unittestEnabled": true,
+    "python.testing.unittestEnabled": false,
     "python.testing.unittestArgs": [
-        "-v", "-s", "${workspaceFolder}/src/test/py", "-p", "Test*.py"
+        "-v", "-s", "${workspaceFolder}", "-p", "Test*.py"
     ],
     "postman.settings.dotenv-detection-notification-visibility": false,
     "chat.mcp.discovery.enabled": {

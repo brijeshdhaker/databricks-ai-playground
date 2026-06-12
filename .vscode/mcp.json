@@ -14,6 +14,8 @@
 				"DATABRICKS_CONFIG_PROFILE":"DEFAULT"
 			}
 		},
+
+		
 		"databricks-sql": {
 			"type": "http",
 			"url": "https://dbc-ad78fc43-bcc0.cloud.databricks.com/api/2.0/mcp/sql",

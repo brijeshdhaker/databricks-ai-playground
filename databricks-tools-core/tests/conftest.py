@@ -20,8 +20,8 @@ if _env_file.exists():
     logging.getLogger(__name__).info(f"Loaded environment from {_env_file}")
 
 # Test catalog and schema names (configurable via env vars)
-TEST_CATALOG = os.environ.get("TEST_CATALOG", "ai_dev_kit_test")
-TEST_SCHEMA = os.environ.get("TEST_SCHEMA", "test_schema")
+TEST_CATALOG = os.environ.get("TEST_CATALOG", "data_quality")
+TEST_SCHEMA = os.environ.get("TEST_SCHEMA", "default")
 TEST_VOLUME = os.environ.get("TEST_VOLUME", "test_volume")
 
 # Test data directory
