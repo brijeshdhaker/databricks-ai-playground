@@ -1,4 +1,4 @@
-# Databricks AI Dev Kit
+# Databricks AI Playground
 .ai-dev-kit/
 .claude/
 .local
@@ -84,3 +84,7 @@ windows_info.txt
 # 
 .databrickscfg
 .databricks
+
+#
+.claude
+.claude-*

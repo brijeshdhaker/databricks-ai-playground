@@ -4,7 +4,7 @@
     "name": "Databricks Solutions"
   },
   "metadata": {
-    "description": "Official Databricks AI Dev Kit plugin marketplace",
+    "description": "Official Databricks AI Playground plugin marketplace",
     "version": "1.1.9"
   },
   "plugins": [

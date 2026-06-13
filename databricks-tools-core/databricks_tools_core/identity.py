@@ -34,7 +34,7 @@ logger = logging.getLogger(__name__)
 
 PRODUCT_NAME = "databricks-ai-dev-kit"
 
-DESCRIPTION_FOOTER = "Built with Databricks AI Dev Kit"
+DESCRIPTION_FOOTER = "Built with Databricks AI Playground"
 
 
 def _load_version() -> str:
@@ -231,7 +231,7 @@ def tag_client(client: WorkspaceClient) -> WorkspaceClient:
 
 
 def with_description_footer(description: Optional[str]) -> str:
-    """Append the AI Dev Kit footer to a resource description.
+    """Append the AI Playground footer to a resource description.
 
     If *description* is empty or ``None``, returns just the footer.
     """

@@ -20,7 +20,9 @@
     "ANTHROPIC_BASE_URL": "http://hostmaster.sandbox.net:11434",
     "ANTHROPIC_AUTH_TOKEN": "dapi..",
     "ANTHROPIC_DEFAULT_OPUS_MODEL": "gemma4:26b-a4b-it-qat",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "gemma4:26b-a4b-it-qat"
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "gemma4:26b-a4b-it-qat",
+    "ANTHROPIC_ORG_ID": "a00c3896-27b9-4518-8cbb-4c1f3dc80dd9",
+    "ANTHROPIC_API_KEY": "sk-ant-api03-"
   },
 
   "companyAnnouncements": [

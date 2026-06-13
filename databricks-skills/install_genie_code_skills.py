@@ -2,7 +2,7 @@
 # MAGIC %md
 # MAGIC # Install Genie Code Skills
 # MAGIC
-# MAGIC This notebook downloads AI Dev Kit skills from GitHub and uploads them to your workspace so Genie Code can use them.
+# MAGIC This notebook downloads AI Playground skills from GitHub and uploads them to your workspace so Genie Code can use them.
 # MAGIC
 # MAGIC Skills are installed to `/Workspace/Users/<your_username>/.assistant/skills/`.
 # MAGIC

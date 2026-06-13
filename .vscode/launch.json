@@ -33,9 +33,9 @@
       "module": "uvicorn",
       "console": "integratedTerminal",
       "args": ["server.app:app", "--reload", "--reload-dir", "server", "--host", "0.0.0.0", "--port", "8000" ],
-      "cwd": "${workspaceFolder}/databricks-builder-app",
+      "cwd": "${workspaceFolder}",
       "jinja": true,
-      "envFile": "${workspaceFolder}/databricks-builder-app/.env.local",
+      "envFile": "${workspaceFolder}/.env",
       "justMyCode": false
     },
     {

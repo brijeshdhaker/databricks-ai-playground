@@ -8,7 +8,7 @@ Please email bugbounty@databricks.com to report any security vulnerabilities. We
 
 ## Plugin Trust Model
 
-This section describes what code executes when you install the Databricks AI Dev Kit as a Claude Code plugin.
+This section describes what code executes when you install the Databricks AI Playground as a Claude Code plugin.
 
 ### What Runs Automatically
 

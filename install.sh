@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Databricks AI Dev Kit - Unified Installer
+# Databricks AI Playground - Unified Installer
 #
 # Installs skills, MCP server, and configuration for Claude Code, Cursor, OpenAI Codex, GitHub Copilot, Gemini CLI, Antigravity, Windsurf, OpenCode, and Kiro.
 #
@@ -146,7 +146,7 @@ while [ $# -gt 0 ]; do
         --experimental)   CHANNEL="experimental"; shift ;;
         -f|--force)       FORCE=true; shift ;;
         -h|--help)        
-            echo "Databricks AI Dev Kit Installer"
+            echo "Databricks AI Playground Installer"
             echo ""
             echo "Usage: bash <(curl -sL .../install.sh) [OPTIONS]"
             echo ""
@@ -1527,9 +1527,9 @@ write_gemini_md() {
     local path=$1
     [ -f "$path" ] && return  # Don't overwrite existing file
     cat > "$path" << 'GEMINIEOF'
-# Databricks AI Dev Kit
+# Databricks AI Playground
 
-You have access to Databricks skills and MCP tools installed by the Databricks AI Dev Kit.
+You have access to Databricks skills and MCP tools installed by the Databricks AI Playground.
 
 ## Available MCP Tools
 
@@ -1880,7 +1880,7 @@ prompt_channel() {
         echo -e "  ${B}🧪 Experimental Channel${N}"
         echo -e "  ${Y}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${N}"
         echo ""
-        echo -e "  You're about to install the ${B}experimental${N} version of AI Dev Kit."
+        echo -e "  You're about to install the ${B}experimental${N} version of AI Playground."
         echo -e "  This includes early access features that may change or break."
         echo ""
         echo -e "  ${B}We'd love your feedback!${N}"
@@ -1958,7 +1958,7 @@ prompt_auth() {
 main() {
     if [ "$SILENT" = false ]; then
         echo ""
-        echo -e "${B}Databricks AI Dev Kit Installer${N}"
+        echo -e "${B}Databricks AI Playground Installer${N}"
         echo "────────────────────────────────"
     fi
     

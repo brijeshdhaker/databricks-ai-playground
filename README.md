@@ -1,4 +1,4 @@
-# Databricks AI Dev Kit
+# Databricks AI Playground
 
 <p align="center">
   <img src="https://img.shields.io/badge/Databricks-Certified%20Gold%20Project-FFD700?style=for-the-badge&logo=databricks&logoColor=black" alt="Databricks Certified Gold Project">
@@ -33,7 +33,7 @@ Built into every Databricks workspace at no extra cost, with deep native product
 
 <br>
 
-<img src="https://img.shields.io/badge/AI_Dev_Kit-FF3621?style=for-the-badge&logo=databricks&logoColor=white" alt="AI Dev Kit" height="42">
+<img src="https://img.shields.io/badge/AI_Dev_Kit-FF3621?style=for-the-badge&logo=databricks&logoColor=white" alt="AI Playground" height="42">
 
 <br><br>
 
@@ -92,7 +92,7 @@ Curated by Databricks field experts. Brings the patterns, skills, and 75+ execut
 
 | Adventure                        | Best For | Start Here |
 |----------------------------------|----------|------------|
-| :star: [**Install AI Dev Kit**](#install-in-existing-project) | **Start here!** Follow quick install instructions to add to your existing project folder | [Quick Start (install)](#install-in-existing-project)
+| :star: [**Install AI Playground**](#install-in-existing-project) | **Start here!** Follow quick install instructions to add to your existing project folder | [Quick Start (install)](#install-in-existing-project)
 | [**Visual Builder App**](#visual-builder-app) | Web-based UI for Databricks development | `databricks-builder-app/` |
 | [**Builder App + Genie Code MCP**](#visual-builder-app) | Builder UI + MCP server for Genie Code in one deployment | `deploy.sh --enable-mcp` |
 | [**Core Library**](#core-library) | Building custom integrations (LangChain, OpenAI, etc.) | `pip install` |
@@ -277,7 +277,7 @@ This directory is customizable if you wish to only use certain skills or even cr
 
 ## Architecture
 
-The AI Dev Kit ships as four composable pieces — install the whole kit, or pick just the parts you need.
+The AI Playground ships as four composable pieces — install the whole kit, or pick just the parts you need.
 
 <p align="center">
   <img src="databricks-tools-core/docs/architecture.svg" alt="Architecture" width="700">

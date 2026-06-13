@@ -170,21 +170,84 @@ if [ -f "$PROJECT_DIR/.env.local" ] && [ "$FORCE_ENV" != true ]; then
   echo -e "  ${GREEN}✓${NC} Updated host, token, and endpoint from profile '${PROFILE}'"
 else
   cat > "$PROJECT_DIR/.env.local" << ENVEOF
+# =============================================================================
+# Databricks Configuration
+# =============================================================================  
 DATABRICKS_HOST=${WORKSPACE_HOST}
-#DATABRICKS_TOKEN=${DATABRICKS_TOKEN}
+DATABRICKS_TOKEN=${DATABRICKS_TOKEN}
+
+# =============================================================================
+# Postgres Configuration
+# =============================================================================
 #LAKEBASE_ENDPOINT=${LAKEBASE_ENDPOINT}
 LAKEBASE_DATABASE_NAME=databricks_postgres
+#LAKEBASE_SCHEMA_NAME=builder_app
+LAKEBASE_SCHEMA_NAME=public
 LAKEBASE_PG_URL=postgresql://postgres:paSSW0rd@postgresql.sandbox.net:5432/databricks_postgres?sslmode=disable
+
+# =============================================================================
+# LLM Provider Configuration
+# =============================================================================
 LLM_PROVIDER=DATABRICKS
-DATABRICKS_MODEL=gemma4:26b-a4b-it-qat #databricks-meta-llama-3-3-70b-instruct
+DATABRICKS_MODEL=databricks-meta-llama-3-3-70b-instruct
 DATABRICKS_MODEL_MINI=databricks-gemini-3-flash
+
+CLAUDE_CODE_STREAM_CLOSE_TIMEOUT=3600000
+CLAUDE_CODE_MAX_OUTPUT_TOKENS=128000
+
+# Anthropic Models (uncomment if using Anthropic instead)
+# LLM_PROVIDER=ANTHROPIC
+ANTHROPIC_BASE_URL=https://dbc-ad78fc43-bcc0.cloud.databricks.com/serving-endpoints/anthropic
+ANTHROPIC_AUTH_TOKEN=dapi8085...
+ANTHROPIC_DEFAULT_OPUS_MODEL=databricks-claude-opus-4-5
+ANTHROPIC_DEFAULT_SONNET_MODEL=databricks-claude-sonnet-4-5
+
+# Azure OpenAI (uncomment if using Azure instead)
+# LLM_PROVIDER=AZURE
+# AZURE_OPENAI_API_KEY=your-api-key
+# AZURE_OPENAI_ENDPOINT=https://your-resource.cognitiveservices.azure.com/
+# AZURE_OPENAI_API_VERSION=2024-08-01-preview
+# AZURE_OPENAI_DEPLOYMENT=gpt-4o
+# AZURE_OPENAI_DEPLOYMENT_MINI=gpt-4o-mini
+
+# =============================================================================
+# MCP Configuration
+# =============================================================================
+ENABLE_MCP_GATEWAY=true
+
+# =============================================================================
+# Skills Configuration
+# =============================================================================
 ENABLED_SKILLS=
 SKILLS_ONLY_MODE=false
+
+# =============================================================================
+# Application Settings
+# =============================================================================
 ENV=development
 PROJECTS_BASE_DIR=./projects
-CLAUDE_CODE_STREAM_CLOSE_TIMEOUT=3600000
+
+# =============================================================================
+# MLflow Tracing Configuration
+# =============================================================================
+# Enable MLflow tracing for Claude Code conversations
+# See: https://docs.databricks.com/aws/en/mlflow3/genai/tracing/integrations/claude-code
+# Optional: Specify a custom experiment for traces
 MLFLOW_TRACKING_URI=databricks
-MLFLOW_EXPERIMENT_NAME=/Workspace/Users/${CURRENT_USER}/builder_app_local_traces
+MLFLOW_EXPERIMENT_NAME=/Workspace/Users/${CURRENT_USER}/ai_playground_traces
+
+
+# =============================================================================
+# DEPLOYMENT TO DATABRICKS APPS
+# =============================================================================
+#
+# The deploy script handles everything automatically:
+#   ./scripts/deploy.sh mcp_ai_playground --profile databricks-cli
+#
+# This provisions Lakebase, creates the app, grants permissions, and deploys.
+# See README.md for full details and options.
+
+
 ENVEOF
   echo -e "  ${GREEN}✓${NC} Generated .env.local"
 fi

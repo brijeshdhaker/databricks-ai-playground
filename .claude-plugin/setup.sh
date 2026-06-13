@@ -30,11 +30,11 @@ MCP_SERVER_DIR="${PLUGIN_ROOT}/databricks-mcp-server"
 # Idempotency check: skip if already set up and working
 if [ -f "${PLUGIN_ROOT}/.venv/bin/python" ] && \
    "${PLUGIN_ROOT}/.venv/bin/python" -c "import databricks_mcp_server" 2>/dev/null; then
-    echo "Databricks AI Dev Kit already set up."
+    echo "Databricks AI Playground already set up."
     exit 0
 fi
 
-echo "Setting up Databricks AI Dev Kit..." >&2
+echo "Setting up Databricks AI Playground..." >&2
 
 # Check for uv
 if ! command -v uv &> /dev/null; then
@@ -60,7 +60,7 @@ uv pip install --python .venv/bin/python -e "$MCP_SERVER_DIR" --quiet >&2
 # Verify installation
 if .venv/bin/python -c "import databricks_mcp_server" 2>/dev/null; then
     touch "${PLUGIN_ROOT}/.venv/.setup-complete"
-    echo "Databricks AI Dev Kit setup complete."
+    echo "Databricks AI Playground setup complete."
 else
     echo "Error: Could not verify MCP server import after install." >&2
     exit 1

@@ -1,5 +1,5 @@
 #
-# Databricks AI Dev Kit - Unified Installer (Windows)
+# Databricks AI Playground - Unified Installer (Windows)
 #
 # Installs skills, MCP server, and configuration for Claude Code, Cursor, OpenAI Codex, GitHub Copilot, Gemini CLI, Antigravity, Windsurf, OpenCode, and Kiro.
 #
@@ -234,7 +234,7 @@ while ($i -lt $args.Count) {
         { $_ -in "--experimental", "-Experimental" } { $script:Channel = "experimental"; $i++ }
         { $_ -in "-f", "--force", "-Force" }   { $script:Force = $true; $i++ }
         { $_ -in "-h", "--help", "-Help" } {
-            Write-Host "Databricks AI Dev Kit Installer (Windows)"
+            Write-Host "Databricks AI Playground Installer (Windows)"
             Write-Host ""
             Write-Host "Usage: irm https://raw.githubusercontent.com/databricks-solutions/ai-dev-kit/main/install.ps1 -OutFile install.ps1"
             Write-Host "       .\install.ps1 [OPTIONS]"
@@ -1675,9 +1675,9 @@ function Write-GeminiMd {
     if (Test-Path $Path) { return }  # Don't overwrite existing file
 
     $content = @"
-# Databricks AI Dev Kit
+# Databricks AI Playground
 
-You have access to Databricks skills and MCP tools installed by the Databricks AI Dev Kit.
+You have access to Databricks skills and MCP tools installed by the Databricks AI Playground.
 
 ## Available MCP Tools
 
@@ -2015,7 +2015,7 @@ function Invoke-PromptChannel {
         Write-Host ""
         Write-Host "  You're about to install the " -NoNewline
         Write-Host "experimental" -ForegroundColor White -NoNewline
-        Write-Host " version of AI Dev Kit."
+        Write-Host " version of AI Playground."
         Write-Host "  This includes early access features that may change or break."
         Write-Host ""
         Write-Host "  We'd love your feedback!" -ForegroundColor White
@@ -2099,7 +2099,7 @@ function Invoke-PromptAuth {
 function Invoke-Main {
     if (-not $script:Silent) {
         Write-Host ""
-        Write-Host "Databricks AI Dev Kit Installer" -ForegroundColor White
+        Write-Host "Databricks AI Playground Installer" -ForegroundColor White
         Write-Host "--------------------------------"
     }
 

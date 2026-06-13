@@ -1,4 +1,4 @@
-# Contributing to AI Dev Kit
+# Contributing to AI Playground
 
 This repository is maintained by Databricks and intended for contributions from Databricks Field Engineers. While the repository is public and meant to help anyone developing projects that use Databricks, external contributions are not currently accepted. Feel free to open an issue with requests or suggestions.
 

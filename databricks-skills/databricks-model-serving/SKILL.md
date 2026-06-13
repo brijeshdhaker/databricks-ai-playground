@@ -55,7 +55,7 @@ ALWAYS use exact endpoint names from this table. NEVER guess or abbreviate.
 | `databricks-gemini-3-flash` | Google | Fast, cost-efficient |
 | `databricks-gemini-2-5-pro` | Google | 1M context, Deep Think |
 | `databricks-gemini-2-5-flash` | Google | 1M context, hybrid reasoning |
-| `gemma4:26b-a4b-it-qat` | Google | 128K context, multilingual |
+| `databricks-gemma-3-12b` | Google | 128K context, multilingual |
 | `databricks-qwen3-next-80b-a3b-instruct` | Alibaba | Efficient MoE |
 
 ### Embedding Models

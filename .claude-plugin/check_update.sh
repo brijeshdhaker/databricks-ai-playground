@@ -1,5 +1,5 @@
 #!/bin/bash
-# Version update check for Databricks AI Dev Kit.
+# Version update check for Databricks AI Playground.
 # Stdout from this script is injected as context Claude can see at session start.
 # Silent on success (up to date) or failure (network error, missing files).
 
@@ -55,7 +55,7 @@ URGENT — before doing ANYTHING else, you MUST display this exact block to the 
 \`\`\`
 ╔═══════════════════════════════════════════════════════╗
 ║                                                       ║
-║   Databricks AI Dev Kit — update available!           ║
+║   Databricks AI Playground — update available!           ║
 ║                                                       ║
 ║   Installed:  v${local_ver}                                     ║
 ║   Available:  v${remote_ver}                                     ║

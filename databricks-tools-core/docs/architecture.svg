@@ -94,7 +94,7 @@
     <text x="580" y="250" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="system-ui, sans-serif" font-size="10">45+ Databricks tools</text>
   </g>
 
-  <!-- Vertical arrows pointing UP from AI Dev Kit to Skills/MCP -->
+  <!-- Vertical arrows pointing UP from AI Playground to Skills/MCP -->
   <line x1="220" y1="300" x2="220" y2="265" stroke="#94a3b8" stroke-width="2.5"/>
   <polygon points="220,260 212,272 228,272" fill="#94a3b8"/>
 
@@ -104,10 +104,10 @@
   <!-- "provides" label - positioned between arrows -->
   <text x="400" y="285" text-anchor="middle" fill="#64748b" font-family="system-ui, sans-serif" font-size="11" font-style="italic">provides</text>
 
-  <!-- BOTTOM: AI Dev Kit Foundation -->
+  <!-- BOTTOM: AI Playgroundundund Foundation -->
   <g filter="url(#shadow)">
     <rect x="150" y="300" width="500" height="65" rx="12" fill="url(#foundationGrad)"/>
-    <text x="400" y="332" text-anchor="middle" fill="white" font-family="system-ui, sans-serif" font-size="18" font-weight="700">AI Dev Kit</text>
+    <text x="400" y="332" text-anchor="middle" fill="white" font-family="system-ui, sans-serif" font-size="18" font-weight="700">AI Playground</text>
     <text x="400" y="352" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="system-ui, sans-serif" font-size="12">Trusted sources for your AI coding assistant</text>
   </g>
 </svg>
