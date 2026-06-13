@@ -7,13 +7,14 @@
 		"default": "",
 	}],
 	"servers": {
-		"databricks-mcps": {
-			"command": "${workspaceFolder}/.venv/bin/python",
-			"args": ["${workspaceFolder}/databricks-mcp-server/run_server.py"],
-			"env":{
-				"DATABRICKS_CONFIG_PROFILE":"DEFAULT"
-			}
-		},
+		
+		// "databricks-mcps": {
+		// 	"command": "${workspaceFolder}/.venv/bin/python",
+		// 	"args": ["${workspaceFolder}/databricks-mcp-server/run_server.py"],
+		// 	"env":{
+		// 		"DATABRICKS_CONFIG_PROFILE":"DEFAULT"
+		// 	}
+		// },
 
 		
 		"databricks-sql": {

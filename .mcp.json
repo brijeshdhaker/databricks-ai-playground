@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "databricks": {
+      "command": "/home/brijeshdhaker/IdeaProjects/databricks-ai-playground/.venv/bin/python",
+      "args": ["/home/brijeshdhaker/IdeaProjects/databricks-ai-playground/databricks-mcp-server/run_server.py"],
+      "defer_loading": true,
+      "env":{
+				"DATABRICKS_CONFIG_PROFILE":"DEFAULT"
+			}
+    }
+  }
+}
