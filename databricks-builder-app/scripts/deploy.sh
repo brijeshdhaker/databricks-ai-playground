@@ -25,7 +25,7 @@ SKIP_BUILD="${SKIP_BUILD:-false}"
 SKIP_LAKEBASE="${SKIP_LAKEBASE:-false}"
 SKIP_SKILLS="${SKIP_SKILLS:-false}"
 ENABLE_MCP_GATEWAY="${ENABLE_MCP_GATEWAY:-false}"
-LAKEBASE_PROJECT_ID="${LAKEBASE_PROJECT_ID:-builder-app-db}"
+LAKEBASE_PROJECT_ID="${LAKEBASE_PROJECT_ID:-mcp-ai-playground}"
 
 usage() {
   echo "Usage: $0 <app-name> [options]"
@@ -80,7 +80,7 @@ fi
 if [ "$ENABLE_MCP_GATEWAY" = true ] && [[ ! "$APP_NAME" == mcp-* ]]; then
   echo ""
   echo -e "${YELLOW}╔════════════════════════════════════════════════════════════╗${NC}"
-  echo -e "${YELLOW}║  ⚠  Genie Code MCP Naming Requirement                     ║${NC}"
+  echo -e "${YELLOW}║  ⚠  Genie Code MCP Naming Requirement                      ║${NC}"
   echo -e "${YELLOW}╚════════════════════════════════════════════════════════════╝${NC}"
   echo ""
   echo -e "  Your app name is: ${RED}${APP_NAME}${NC}"
@@ -303,15 +303,15 @@ env:
   - name: LLM_PROVIDER
     value: "DATABRICKS"
   - name: DATABRICKS_MODEL
-    value: "databricks-meta-llama-3-3-70b-instruct"
+    value: "databricks-gemma-3-12b"
   - name: DATABRICKS_MODEL_MINI
-    value: "databricks-gemini-3-flash"
+    value: "databricks-meta-llama-3-1-8b-instruct"
   - name: CLAUDE_CODE_STREAM_CLOSE_TIMEOUT
     value: "3600000"
   - name: MLFLOW_TRACKING_URI
     value: "databricks"
   - name: MLFLOW_EXPERIMENT_NAME
-    value: "/Workspace/Shared/builder_app_ml_trace"
+    value: "/Workspace/Users/brijeshdhaker@gmail.com/ai_playground_traces"
   - name: AUTO_GRANT_PERMISSIONS_TO
     value: "account users"
 APPYAML

@@ -16,22 +16,22 @@ The framework supports two trace sources with automatic fallback:
 │                                                             │
 │  1. Check: mlflow autolog claude --status                   │
 │                    │                                        │
-│         ┌─────────┴─────────┐                              │
-│         │                   │                              │
-│         ▼                   ▼                              │
-│   ┌──────────┐       ┌──────────────┐                      │
-│   │ ENABLED  │       │ NOT ENABLED  │                      │
-│   └────┬─────┘       └──────┬───────┘                      │
-│        │                    │                              │
-│        ▼                    ▼                              │
-│  Query MLflow          Use local trace                     │
-│  experiment            ~/.claude/projects/                 │
-│  for trace             {hash}/{session}.jsonl              │
-│        │                    │                              │
-│        └────────┬───────────┘                              │
-│                 │                                          │
-│                 ▼                                          │
-│         Run trace scorers                                  │
+│         ┌─────────┴─────────┐                               │
+│         │                   │                               │
+│         ▼                   ▼                               │
+│   ┌──────────┐       ┌──────────────┐                       │
+│   │ ENABLED  │       │ NOT ENABLED  │                       │
+│   └────┬─────┘       └──────┬───────┘                       │
+│        │                    │                               │
+│        ▼                    ▼                               │
+│  Query MLflow          Use local trace                      │
+│  experiment            ~/.claude/projects/                  │
+│  for trace             {hash}/{session}.jsonl               │
+│        │                    │                               │
+│        └────────┬───────────┘                               │
+│                 │                                           │
+│                 ▼                                           │
+│         Run trace scorers                                   │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```

@@ -368,14 +368,14 @@ async def stream_agent_response(
     effective_fmapi_token = fmapi_token or databricks_token
     if effective_fmapi_host and effective_fmapi_token:
       host = effective_fmapi_host.replace('https://', '').replace('http://', '').rstrip('/')
-      anthropic_base_url = 'http://hostmaster.sandbox.net:11434' #f'https://{host}/serving-endpoints/anthropic'
+      anthropic_base_url = f'https://{host}/serving-endpoints/anthropic'
 
-      claude_env['ANTHROPIC_BASE_URL'] = 'http://hostmaster.sandbox.net:11434' #anthropic_base_url
+      claude_env['ANTHROPIC_BASE_URL'] = anthropic_base_url
       claude_env['ANTHROPIC_API_KEY'] = effective_fmapi_token
       claude_env['ANTHROPIC_AUTH_TOKEN'] = effective_fmapi_token
 
       # Set the model to use (required for Databricks FMAPI)
-      anthropic_model = os.environ.get('ANTHROPIC_MODEL', 'gemma4:26b-a4b-it-qat')
+      anthropic_model = os.environ.get('ANTHROPIC_MODEL', 'databricks-claude-opus-4-6')
       claude_env['ANTHROPIC_MODEL'] = anthropic_model
 
       # Disable beta headers and experimental betas for Databricks FMAPI compatibility

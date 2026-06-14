@@ -1,4 +1,5 @@
-# Databricks AI Playground
+# [Databricks AI Playground] (https://mcp-ai-playground-3968583876776575.aws.databricksapps.com/projects/58bd3c32-eaa9-4a21-a541-efb70373c68d)
+
 
 <p align="center">
   <img src="https://img.shields.io/badge/Databricks-Certified%20Gold%20Project-FFD700?style=for-the-badge&logo=databricks&logoColor=black" alt="Databricks Certified Gold Project">

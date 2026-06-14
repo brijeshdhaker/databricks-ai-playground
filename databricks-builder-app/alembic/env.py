@@ -136,7 +136,7 @@ def run_migrations_online():
 
   # Get schema name from Alembic config or environment
   #schema_name = config.get_main_option('lakebase_schema_name') or os.environ.get('LAKEBASE_SCHEMA_NAME', 'builder_app')
-  schema_name = 'public'
+  schema_name = 'builder_app'
 
   # Validate schema name to prevent SQL injection (only allow alphanumeric + underscores)
   import re

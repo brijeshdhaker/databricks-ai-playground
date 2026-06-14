@@ -240,22 +240,22 @@ This will:
 
 ```bash
 # First time — everything from scratch
-./scripts/start_local.sh --profile DEFAULT
+./scripts/start_local.sh --profile databricks-cli
 
 # Subsequent runs — fast (deps cached, Lakebase exists)
-./scripts/start_local.sh --profile DEFAULT
+./scripts/start_local.sh --profile databricks-cli
 
 # Skip Lakebase provisioning
-./scripts/start_local.sh --profile DEFAULT --skip-lakebase
+./scripts/start_local.sh --profile databricks-cli --skip-lakebase
 
 # Force reinstall all dependencies
-./scripts/start_local.sh --profile DEFAULT --force-install
+./scripts/start_local.sh --profile databricks-cli --force-install
 
 # Regenerate .env.local
-./scripts/start_local.sh --profile DEFAULT --force-env --skip-lakebase
+./scripts/start_local.sh --profile databricks-cli --force-env --skip-lakebase
 
 # Custom Lakebase project name
-./scripts/start_local.sh --profile DEFAULT --lakebase-id my-custom-db
+./scripts/start_local.sh --profile databricks-cli --lakebase-id my-custom-db
 ```
 
 #### Access the App
@@ -498,16 +498,16 @@ That's it. The script handles everything:
 
 ```bash
 # Full deploy from scratch
-./scripts/deploy.sh my-builder-app --profile sandbox-databricks-pat
+./scripts/deploy.sh mcp-ai-playground --profile databricks-cli
 
 # Deploy with MCP Gateway for Genie Code (name MUST start with mcp-)
-./scripts/deploy.sh mcp-builder-app --enable-mcp --profile databricks-pat
+./scripts/deploy.sh mcp-ai-playground --enable-mcp --profile databricks-cli
 
 # Quick redeploy (skip Lakebase + frontend build + skills download)
-./scripts/deploy.sh my-builder-app --profile sandbox-databricks-pat --skip-lakebase --skip-build --skip-skills
+./scripts/deploy.sh mcp-ai-playground --skip-lakebase --skip-build --skip-skills --profile databricks-cli
 
 # Custom Lakebase project name
-./scripts/deploy.sh my-builder-app --profile sandbox-databricks-pat --lakebase-id my-custom-db
+./scripts/deploy.sh mcp-ai-playground --lakebase-id mcp-ai-playground --profile databricks-cli
 
 # All options
 ./scripts/deploy.sh --help
@@ -534,13 +534,13 @@ bundle:
 variables:
   lakebase_project_id:
     description: "Lakebase project ID"
-    default: "builder-app-db"
+    default: "mcp-ai-playground"
 
 resources:
   postgres_projects:
     builder_db:
       project_id: ${var.lakebase_project_id}
-      display_name: "builder-app-db"
+      display_name: "mcp-ai-playground"
       pg_version: 17
       default_endpoint_settings:
         autoscaling_limit_min_cu: 0.5
