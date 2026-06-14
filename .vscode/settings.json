@@ -43,15 +43,37 @@
     "claudeCode.respectGitIgnore": true,
     "claudeCode.enableNewConversationShortcut": true,
     "claudeCode.enableReopenClosedSessionShortcut": true,
-    "claudeCode.environmentVariables": {
-        "ANTHROPIC_MODEL": "gemma4:26b-a4b-it-qat",
-        "ANTHROPIC_BASE_URL": "http://hostmaster.sandbox.net:11434",
-        "ANTHROPIC_AUTH_TOKEN": "dapi..",
-        "ANTHROPIC_DEFAULT_OPUS_MODEL": "gemma4:26b-a4b-it-qat",
-        "ANTHROPIC_DEFAULT_SONNET_MODEL": "gemma4:26b-a4b-it-qat"
-    },
-
+    "claudeCode.environmentVariables":[
+        {
+        "name": "ANTHROPIC_BASE_URL",
+        "value": "http://hostmaster.sandbox.net:11434"
+        },
+        {
+        "name": "ANTHROPIC_AUTH_TOKEN",
+        "value": "dapi.."
+        },
+        {
+        "name": "ANTHROPIC_MODEL",
+        "value": "gemma4:12b-it-qat"
+        },
+        {
+        "name": "ANTHROPIC_CUSTOM_HEADERS",
+        "value": "x-databricks-use-coding-agent-mode: true"
+        },
+        {
+        "name": "ANTHROPIC_DEFAULT_OPUS_MODEL",
+        "value": "claude-opus-4-6"
+        },
+        {
+        "name": "ANTHROPIC_DEFAULT_SONNET_MODEL",
+        "value": "claude-sonnet-4-6"
+        },
+        {
+        "name": "ANTHROPIC_DEFAULT_HAIKU_MODEL",
+        "value": "claude-haiku-4-5"
+        }
+    ],
+    
     "jupyter.interactiveWindow.cellMarker.codeRegex": "^# COMMAND ----------|^# Databricks notebook source|^(#\\s*%%|#\\s*\\<codecell\\>|#\\s*In\\[\\d*?\\]|#\\s*In\\[ \\])",
-    "jupyter.interactiveWindow.cellMarker.default": "# COMMAND ----------"
-
+    "jupyter.interactiveWindow.cellMarker.default": "# COMMAND ----------",
 }

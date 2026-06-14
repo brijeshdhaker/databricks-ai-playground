@@ -7,22 +7,12 @@
 		"default": "",
 	}],
 	"servers": {
-		
-		// "databricks-mcps": {
-		// 	"command": "${workspaceFolder}/.venv/bin/python",
-		// 	"args": ["${workspaceFolder}/databricks-mcp-server/run_server.py"],
-		// 	"env":{
-		// 		"DATABRICKS_CONFIG_PROFILE":"DEFAULT"
+		// "databricks-sql": {
+		// 	"type": "http",
+		// 	"url": "https://dbc-ad78fc43-bcc0.cloud.databricks.com/api/2.0/mcp/sql",
+		// 	"headers": {
+		// 		"Authorization": "Bearer ${input:databricks_access_token}"
 		// 	}
 		// },
-
-		
-		"databricks-sql": {
-			"type": "http",
-			"url": "https://dbc-ad78fc43-bcc0.cloud.databricks.com/api/2.0/mcp/sql",
-			"headers": {
-				"Authorization": "Bearer ${input:databricks_access_token}"
-			}
-		},
 	}
 }

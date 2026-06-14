@@ -9,8 +9,12 @@ from typing import Any, Dict, List, Optional
 from databricks.sdk import WorkspaceClient
 from databricks.sdk.service.sql import StatementState
 #
-from databricks.labs.dqx.profiler.generator import DQGenerator
 from databricks.labs.dqx.config import InputConfig
+from databricks.labs.dqx.profiler.profiler import DQProfiler
+from databricks.labs.dqx.profiler.generator import DQGenerator
+from databricks.labs.dqx.profiler.dlt_generator import DQDltGenerator
+from databricks.labs.dqx.config import WorkspaceFileChecksStorageConfig
+from databricks.labs.dqx.engine import DQEngine
 
 from ...auth import get_workspace_client
 
@@ -91,24 +95,29 @@ class DQXExecutor:
         if query_tags:
             from databricks.sdk.service.sql import QueryTag
 
-            exec_params["query_tags"] = [
-                QueryTag(key=k.strip(), value=v.strip())
-                for pair in query_tags.split(",")
-                for k, v in [pair.split(":", 1)]
-                if ":" in pair
-            ]
+            # exec_params["query_tags"] = [
+            #     QueryTag(key=k.strip(), value=v.strip())
+            #     for pair in query_tags.split(",")
+            #     for k, v in [pair.split(":", 1)]
+            #     if ":" in pair
+            # ]
 
         # Submit the rule query
         try:
             from databricks.connect import DatabricksSession
-            spark = DatabricksSession.builder.getOrCreate()
-            ws = self.client
-            generator = DQGenerator(workspace_client=ws) #, spark=spark
-            checks = generator.generate_dq_rules_ai_assisted(
-                user_input=rule_query,
-                input_config=InputConfig(location=f"{catalog}.{schema}.customers")
-            )
-            response = checks
+            #spark = DatabricksSession.builder.getOrCreate()
+            spark = DatabricksSession.builder.serverless().profile("DEFAULT").getOrCreate()
+            # ws = self.client
+            #generator = DQGenerator(workspace_client=ws, spark=spark) #, spark=spark
+            #df = spark.read.table("samples.nyctaxi.trips").limit(5)
+            df = spark.sql("select * from samples.nyctaxi.trips LIMIT 5")
+            df.show(5)
+            # checks = generator.generate_dq_rules_ai_assisted(
+            #     user_input=rule_query,
+            #     input_config=InputConfig(location=f"{catalog}.{schema}.customers")
+            # )
+            #response = checks
+            response = f"total records {df.count()}"
             #response = self.client.statement_execution.execute_statement(**exec_params)
         except Exception as e:
             raise DQXExecutionError(
