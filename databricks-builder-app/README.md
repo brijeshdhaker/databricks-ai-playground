@@ -255,7 +255,7 @@ This will:
 ./scripts/start_local.sh --profile databricks-cli --force-env --skip-lakebase
 
 # Custom Lakebase project name
-./scripts/start_local.sh --profile databricks-cli --lakebase-id my-custom-db
+./scripts/start_local.sh --profile databricks-cli --lakebase-id mcp-ai-playground
 ```
 
 #### Access the App

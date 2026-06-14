@@ -1,0 +1,12 @@
+apply DQX rules to a table data_quality.default.employee
+
+
+Create DQX quality rules (checks) for a table 'data_quality.default.employee'.
+- make sure rule generated in yaml for storage
+- validate that column 'emp_name' is not null / in a row
+- validate that column 'emp_id' is not null / unique / in a set
+- save genereated rulres in user workspace as dqx_employee_rules.yaml
+- Covers DQRowRule, DQDatasetRule, DQForEachColRule
+
+
+Use when the user asks to "add a DQX check", "define a data quality rule", "validate that column X is not null / unique / in a set", or wants checks expressed in YAML/JSON for storage. Covers DQRowRule, DQDatasetRule, DQForEachColRule, built-in check_funcs, filters, user_metadata, custom SQL/Python checks, and the declarative metadata form.
