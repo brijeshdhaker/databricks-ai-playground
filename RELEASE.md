@@ -1,8 +1,11 @@
 #
 python -m ensurepip --upgrade
 
-# 
-uv venv --python 3.12.13
+# serverless
+uv venv --python 3.12.3
+
+#
+pip download -d dist cowsay==6.1
 
 # Install using uv pacakage manager
 ```

@@ -30,10 +30,14 @@ databricks auth token --profile databricks-cli
 databricks current-user me --profile databricks-cli
 
 #
-databricks functions list data_quality default
+databricks functions list data_quality default --output json
 
 #
-databricks workspace list /Workspace/Users/brijeshdhaker@gmail.com/apps/mcp-builder-app --profile databricks-cli
+### Workspace
+#
+``` bash
+#
+databricks workspace list /Workspace/Users/brijeshdhaker@gmail.com/apps --profile databricks-cli
 
 # Download the app files to your computer:
 databricks workspace export-dir /Workspace/Users/brijeshdhaker@gmail.com/apps/mcp-builder-app . --profile databricks-cli
@@ -41,26 +45,42 @@ databricks workspace export-dir /Workspace/Users/brijeshdhaker@gmail.com/apps/mc
 # Sync your changes:
 databricks sync --watch . /Workspace/Users/brijeshdhaker@gmail.com/apps/mcp-builder-app --profile databricks-cli
 
-# Deploy/Update Lakebase only
-databricks bundle deploy --profile databricks-cli
+```
 
-# Destroy Lakebase (does NOT affect the app)
-databricks bundle destroy --profile databricks-cli
+#
+### Databricks Bundle Deploymnet
+#
+``` bash
 
+#### Validate your syntax: Ensure there are no structural errors in your YAML configuration.
+databricks bundle validate
 
-# Deploy to Databricks Apps:
+#### Deploy/Update Lakebase only
+databricks bundle deploy --target dev --profile databricks-cli
+
+#### Destroy Lakebase (does NOT affect the app)
+databricks bundle destroy --auto-approve --profile databricks-cli
+
+#### Trigger Remote Job
+databricks bundle run --target dev job_pipeline_dqx_qc
+
+```
+#
+### Databricks Apps Deploymnet:
+#
+```bash
+#
 databricks apps deploy mcp-builder-app --source-code-path /Workspace/Users/brijeshdhaker@gmail.com/apps/mcp-builder-app --profile databricks-cli
-
 
 # Show Details
 databricks apps list --profile databricks-cli --output json
+
+#
 databricks apps get mcp-builder-app --profile databricks-cli --output json
 
 # Delete the app
 databricks apps delete mcp-builder-app --profile databricks-cli
-
-# Delete the Lakebase database
-databricks bundle destroy --profile databricks-cli --auto-approve
+```
 
 # Installation
 DQX_FORCE_INSTALL=global databricks labs install dqx@v0.12.0 --profile databricks-cli

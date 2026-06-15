@@ -2,16 +2,16 @@
 
 resources:
   pipelines:
-    etl_pipeline_dqx_qc:
-      name: etl_pipeline_dqx_qc
+    lakeflow_pipeline_dqx_qc:
+      name: lakeflow_pipeline_dqx_qc
       catalog: ${var.catalog}
       schema: ${var.schema}
       serverless: true
-      root_path: "../databricks_dqx_app/etl"
+      root_path: "../databricks_dqx_app"
 
       libraries:
         - glob:
-            include: ../databricks_dqx_app/**
+            include: ../databricks_dqx_app/etl/transformations/**
 
       environment:
         dependencies:

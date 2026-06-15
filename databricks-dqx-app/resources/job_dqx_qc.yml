@@ -1,0 +1,93 @@
+# A sample job for job_dqx_qc_pipeline.
+resources:
+  jobs:
+    job_pipeline_dqx_qc:
+      name: job_pipeline_dqx_qc
+
+      trigger:
+        # Run this job every day, exactly one day from the last run; see https://docs.databricks.com/api/workspace/jobs/create#trigger
+        periodic:
+          interval: 1
+          unit: DAYS
+
+      email_notifications:
+        on_failure:
+          - brijeshdhaker@gmail.com
+
+      parameters:
+        - name: catalog
+          default: ${var.catalog}
+        - name: schema
+          default: ${var.schema}
+
+      tasks:
+        #
+        #
+        - task_key: notebook_task
+          #serverless: {}
+          environment_key: default     # Link the task her
+          notebook_task:
+            notebook_path: ../databricks_dqx_app/sample_notebook.ipynb
+
+        #
+        #
+        - task_key: cowsay-task
+          environment_key: default
+          spark_python_task:
+            python_file: ../databricks_dqx_app/cowsay-main.py        
+        #
+        #
+        - task_key: spark_python_task
+          depends_on:
+            - task_key: notebook_task        
+          spark_python_task:
+            python_file: ../databricks_dqx_app/main.py
+            parameters:
+              - "--catalog"
+              - "${var.catalog}"
+              - "--schema"
+              - "${var.schema}"
+          # The key that references an environment spec in a job.
+          environment_key: default
+        
+        #
+        #
+        - task_key: py_wheel_task
+          depends_on:
+            - task_key: notebook_task
+          python_wheel_task:
+            package_name: databricks_dqx_app
+            entry_point: pywhl-main
+            parameters:
+              - "--catalog"
+              - "${var.catalog}"
+              - "--schema"
+              - "${var.schema}"
+          environment_key: default
+        #
+        #
+        #
+        - task_key: refresh_pipeline
+          depends_on:
+            - task_key: notebook_task
+          pipeline_task:
+            pipeline_id: ${resources.pipelines.lakeflow_pipeline_dqx_qc.id}
+      #
+      #    
+      #
+      environments:
+        - environment_key: default
+          spec:
+            environment_version: "4"
+            dependencies:
+              # Relative local path reference to the private wheel package.
+              # This references alone is sufficient to upload it on deployment.
+              #
+              # It is uploaded to `${workspace.artifact_path}`, which can point to
+              # a workspace directory (under `${workspace.bundle_root}`, by default),
+              # or a Unity Catalog Volume.
+              #
+              # This value is automatically rewritten to the fully qualified remote path.
+              - ../dist/cowsay-*.whl
+              - ../dist/databricks_dqx_app-*.whl
+              - databricks-labs-dqx

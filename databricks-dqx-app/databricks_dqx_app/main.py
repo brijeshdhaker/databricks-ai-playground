@@ -3,8 +3,8 @@ from databricks.sdk.runtime import spark
 #
 from databricks_dqx_app import taxis
 
+# python -m databricks_dqx_app.main --catalog workspace --schema default
 
-# com.example.databricks.main:main --catalog workspace --schema default
 def main():
     # Process command-line arguments
     parser = argparse.ArgumentParser(

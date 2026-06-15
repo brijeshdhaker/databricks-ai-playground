@@ -7,23 +7,32 @@ name = "databricks_dqx_app"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.11,<=3.12.3"
 license = {file = "LICENSE.md"}
 authors = [
     {name = "Databricks"},
 ]
 
 dependencies = [
-    "dash>=3.3.0",
-    "dash-bootstrap-components>=2.0.0",
+    "dash>=4.2.0",
+    "dash-bootstrap-components>=2.0.4",
     "pandas>=2.3.3",
     "plotly>=6.8.0",
-    "databricks-sql-connector>=4.2.6",
-    "databricks-sdk>=0.117.0",
     "python-dotenv>=1.2.2",
     "dash-ag-grid>=35.2.0",
-    "databricks-connect>=18.2.1",
+    "databricks-sql-connector>=4.2.6",
+    "databricks-sdk>=0.117.0",
+    "databricks-connect==16.1.7",
+    "databricks-dlt>=0.3.0"
 ]
+
+[project.optional-dependencies]
+dev = [
+
+]
+
+[project.scripts]
+pywhl-main = "databricks_dqx_app.main:main"
 
 #
 [tool.setuptools.packages.find]
