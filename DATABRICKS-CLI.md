@@ -21,7 +21,7 @@ databricks fs ls
 databricks auth login --profile databricks-cli
 databricks auth login --host https://dbc-ad78fc43-bcc0.cloud.databricks.com --profile databricks-cli
 
-databricks auth login --configure-serverless --host https://dbc-ad78fc43-bcc0.cloud.databricks.com
+databricks auth login --configure-serverless --host https://dbc-ad78fc43-bcc0.cloud.databricks.com --profile databricks-cli
 
 databricks auth describe --profile databricks-cli
 
@@ -41,13 +41,26 @@ databricks workspace export-dir /Workspace/Users/brijeshdhaker@gmail.com/apps/mc
 # Sync your changes:
 databricks sync --watch . /Workspace/Users/brijeshdhaker@gmail.com/apps/mcp-builder-app --profile databricks-cli
 
+# Deploy/Update Lakebase only
+databricks bundle deploy --profile databricks-cli
+
+# Destroy Lakebase (does NOT affect the app)
+databricks bundle destroy --profile databricks-cli
+
+
 # Deploy to Databricks Apps:
 databricks apps deploy mcp-builder-app --source-code-path /Workspace/Users/brijeshdhaker@gmail.com/apps/mcp-builder-app --profile databricks-cli
+
 
 # Show Details
 databricks apps list --profile databricks-cli --output json
 databricks apps get mcp-builder-app --profile databricks-cli --output json
 
+# Delete the app
+databricks apps delete mcp-builder-app --profile databricks-cli
+
+# Delete the Lakebase database
+databricks bundle destroy --profile databricks-cli --auto-approve
 
 # Installation
 DQX_FORCE_INSTALL=global databricks labs install dqx@v0.12.0 --profile databricks-cli

@@ -223,7 +223,7 @@ One command provisions Lakebase, installs all dependencies, and starts the app:
 
 ```bash
 cd databricks-builder-app
-./scripts/start_local.sh --profile <your-profile>
+./scripts/start_local.sh --profile databricks-cli
 ```
 
 This will:
@@ -246,16 +246,16 @@ This will:
 ./scripts/start_local.sh --profile databricks-cli
 
 # Skip Lakebase provisioning
-./scripts/start_local.sh --profile databricks-cli --skip-lakebase
+./scripts/start_local.sh --skip-lakebase --profile databricks-cli 
 
 # Force reinstall all dependencies
-./scripts/start_local.sh --profile databricks-cli --force-install
+./scripts/start_local.sh --force-install --profile databricks-cli
 
 # Regenerate .env.local
-./scripts/start_local.sh --profile databricks-cli --force-env --skip-lakebase
+./scripts/start_local.sh --force-env --skip-lakebase --profile databricks-cli
 
 # Custom Lakebase project name
-./scripts/start_local.sh --profile databricks-cli --lakebase-id mcp-ai-playground
+./scripts/start_local.sh --lakebase-id mcp-ai-playground --profile databricks-cli
 ```
 
 #### Access the App
@@ -478,7 +478,7 @@ The Builder App uses an automated deploy script that provisions all infrastructu
 cd databricks-builder-app
 
 # Full deploy — creates Lakebase, builds frontend, installs skills, creates app, grants permissions, deploys
-./scripts/deploy.sh <app-name> --profile <your-profile>
+./scripts/deploy.sh mcp-ai-playground --profile databricks-cli
 ```
 
 That's it. The script handles everything:
@@ -552,20 +552,20 @@ You can manage the Lakebase infrastructure independently:
 
 ```bash
 # Deploy/update Lakebase only
-databricks bundle deploy --profile <profile>
+databricks bundle deploy --profile databricks-cli
 
 # Destroy Lakebase (does NOT affect the app)
-databricks bundle destroy --profile <profile>
+databricks bundle destroy --profile databricks-cli
 ```
 
 ### Redeploying After Code Changes
 
 ```bash
 # Full redeploy (rebuilds everything)
-./scripts/deploy.sh my-builder-app --profile <profile>
+./scripts/deploy.sh mcp-ai-playground --profile databricks-cli
 
 # Quick redeploy (server code changes only)
-./scripts/deploy.sh my-builder-app --profile <profile> --skip-lakebase --skip-build --skip-skills
+./scripts/deploy.sh mcp-ai-playground --skip-lakebase --skip-build --skip-skills --profile databricks-cli
 ```
 
 ### MCP Gateway for Genie Code
@@ -597,10 +597,10 @@ The MCP gateway reuses the same FastMCP server and tool registrations that the i
 
 ```bash
 # Deploy with MCP Gateway enabled (Genie Code compatible name)
-./scripts/deploy.sh mcp-builder-app --enable-mcp --profile <your-profile>
+./scripts/deploy.sh mcp-builder-app --enable-mcp --profile databricks-cli
 
 # Quick redeploy (code changes only)
-./scripts/deploy.sh mcp-builder-app --enable-mcp --skip-lakebase --skip-build --skip-skills --profile <profile>
+./scripts/deploy.sh mcp-builder-app --enable-mcp --skip-lakebase --skip-build --skip-skills --profile databricks-cli
 ```
 
 The `--enable-mcp` flag sets `ENABLE_MCP_GATEWAY=true` and `FASTMCP_STATELESS_HTTP=true` in the generated `app.yaml`. Without this flag, the MCP gateway is completely disabled and the app behaves identically to a standard deployment.
@@ -652,10 +652,10 @@ ENABLE_MCP_GATEWAY=true uvicorn server.app:app --reload --port 8000 --reload-dir
 
 ```bash
 # Delete the app
-databricks apps delete my-builder-app --profile <profile>
+databricks apps delete mcp-builder-app --profile databricks-cli
 
 # Delete the Lakebase database
-databricks bundle destroy --profile <profile> --auto-approve
+databricks bundle destroy --auto-approve --profile databricks-cli
 ```
 
 ### MLflow Tracing

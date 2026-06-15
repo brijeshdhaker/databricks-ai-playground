@@ -1,0 +1,20 @@
+# The main pipeline for bd-databricks-module
+
+resources:
+  pipelines:
+    etl_pipeline_dqx_qc:
+      name: etl_pipeline_dqx_qc
+      catalog: ${var.catalog}
+      schema: ${var.schema}
+      serverless: true
+      root_path: "../databricks_dqx_app/etl"
+
+      libraries:
+        - glob:
+            include: ../databricks_dqx_app/**
+
+      environment:
+        dependencies:
+          # We include every dependency defined by pyproject.toml by defining an editable environment
+          # that points to the folder where pyproject.toml is deployed.
+          - --editable ${workspace.file_path}

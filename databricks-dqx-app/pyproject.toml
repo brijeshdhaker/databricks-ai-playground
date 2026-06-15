@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "databricks_dqx_app"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+license = {file = "LICENSE.md"}
+authors = [
+    {name = "Databricks"},
+]
+
+dependencies = [
+    "dash>=3.3.0",
+    "dash-bootstrap-components>=2.0.0",
+    "pandas>=2.3.3",
+    "plotly>=6.8.0",
+    "databricks-sql-connector>=4.2.6",
+    "databricks-sdk>=0.117.0",
+    "python-dotenv>=1.2.2",
+    "dash-ag-grid>=35.2.0",
+    "databricks-connect>=18.2.1",
+]
+
+#
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["databricks_dqx_app*"]

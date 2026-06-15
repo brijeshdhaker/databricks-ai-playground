@@ -2,11 +2,11 @@
 # The Databricks extension requires databricks.yml configuration file.
 # See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
 bundle:
-  name: bundle_databricks_apps
+  name: bundle_databricks_dqx_app
   uuid: 60f10c32-9334-4f7f-9b11-d829da36a95f
 
 include:
-  - databricks-dqx-app/resources/*.yml
+  - resources/*.yml
 
 artifacts:
   python_artifact:
@@ -23,7 +23,7 @@ variables:
     default: "default"
   lakebase_project_id:
     description: "Lakebase Project ID"
-    default: "mcp-ai-playground"
+    default: "databricks-ai-playground"
 
 targets:
   dev:
@@ -53,22 +53,12 @@ targets:
       - user_name: brijeshdhaker@gmail.com
         level: CAN_MANAGE
 
+
 resources:
-  #
-  postgres_projects:
-    builder_db:
-      project_id: ${var.lakebase_project_id}
-      display_name: "mcp-ai-playground"
-      pg_version: 17
-      default_endpoint_settings:
-        autoscaling_limit_min_cu: 0.5
-        autoscaling_limit_max_cu: 2
-        suspend_timeout_duration: "300s"
-  #
   apps:
     databricks_dqx_app:
       name: databricks_dqx_app
-      source_code_path: ./databricks-dqx-app
+      source_code_path: .
       resources:
         - name: 'a_number'
           uc_securable:
@@ -80,15 +70,6 @@ resources:
             name: 'genie_space'
             space_id: '01f09dad81ae105b9cd77cec8660f37c'
             permission: 'CAN_RUN'
-    #
-    mcp_ai_playground:
-      name: mcp_ai_playground
-      source_code_path: ./databricks-builder-app
-      resources:
-        - name: 'Bakehouse Sales Starter Space'
-          genie_space:
-            name: 'genie_space'
-            space_id: '01f09dad81ae105b9cd77cec8660f37c'
-            permission: 'CAN_RUN'
+
   
 
