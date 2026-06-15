@@ -57,7 +57,7 @@ targets:
 resources:
   apps:
     databricks_dqx_app:
-      name: databricks_dqx_app
+      name: databricks-dqx-app
       source_code_path: .
       resources:
         - name: 'a_number'
