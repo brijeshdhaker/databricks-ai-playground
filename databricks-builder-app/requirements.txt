@@ -309,7 +309,7 @@ pluggy==1.6.0
     # via
     #   diff-cover
     #   pytest
-plutoprint==0.19.0
+plutoprint==0.20.0
     # via databricks-builder-app
 prettytable==3.17.0
     # via skops
